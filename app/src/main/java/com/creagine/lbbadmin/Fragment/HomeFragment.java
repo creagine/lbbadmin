@@ -12,6 +12,8 @@ import android.widget.Button;
 
 import com.creagine.lbbadmin.MainActivity;
 import com.creagine.lbbadmin.R;
+import com.creagine.lbbadmin.SiswaActivity;
+import com.creagine.lbbadmin.TutorActivity;
 
 public class HomeFragment extends Fragment {
 
@@ -40,7 +42,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), MainActivity.class);
+                Intent intent = new Intent(getActivity(), SiswaActivity.class);
                 startActivity(intent);
 
             }
@@ -50,7 +52,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), MainActivity.class);
+                Intent intent = new Intent(getActivity(), TutorActivity.class);
                 startActivity(intent);
 
             }
