@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">lbb admin</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="favorite">Favorite</string>
+    <string name="account">Account</string>
+
+    <string-array name="jenisKelamin">
+        <item>Laki-Laki</item>
+        <item>Perempuan</item>
+    </string-array>
+
+    <string-array name="jurusan">
+        <item>Keyboard</item>
+        <item>Vocal</item>
+        <item>Popular Piano</item>
+        <item>Classical Piano</item>
+    </string-array>
+
+</resources>

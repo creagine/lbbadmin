@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1002442272766",
+    "firebase_url": "https://prototype-creagine.firebaseio.com",
+    "project_id": "prototype-creagine",
+    "storage_bucket": "prototype-creagine.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1002442272766:android:a3e9f911b2d47366",
+        "android_client_info": {
+          "package_name": "com.creagine.lbbadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1002442272766-ppnuq72ndhqp7u45jpqbp7ocp4hm53cd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.creagine.lbbadmin",
+            "certificate_hash": "42a28b0413d24b73f32350d73dd515baf5b4f3f4"
+          }
+        },
+        {
+          "client_id": "1002442272766-cfkp5648rqnvjf7til3pqdum57gj6rf8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFCcHrVuxQcYWHjGlnrS-0Hm1cuGPsPNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1002442272766-cfkp5648rqnvjf7til3pqdum57gj6rf8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
