@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "715665755737",
+    "firebase_url": "https://supervisi-pembelajaran.firebaseio.com",
+    "project_id": "supervisi-pembelajaran",
+    "storage_bucket": "supervisi-pembelajaran.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715665755737:android:a3e9f911b2d47366",
+        "android_client_info": {
+          "package_name": "com.creagine.lbbadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715665755737-7jspqrie1ibb1nulnrgqjtns56bs9jk8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.creagine.lbbadmin",
+            "certificate_hash": "3213eee043b37309341b8a906bab82f427abc034"
+          }
+        },
+        {
+          "client_id": "715665755737-erhdr377ud2d1h5c2kk20sfsclp407eq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFbrNUse642_0mxb74uWyzr_lV0ZNvqx8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715665755737-erhdr377ud2d1h5c2kk20sfsclp407eq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
