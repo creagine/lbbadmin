@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.creagine.lbbadmin.AboutActivity;
 import com.creagine.lbbadmin.JadwalActivity;
 import com.creagine.lbbadmin.MainActivity;
 import com.creagine.lbbadmin.R;
@@ -20,6 +21,7 @@ import com.creagine.lbbadmin.TutorActivity;
 public class HomeFragment extends Fragment {
 
     CardView cardJadwal,cardSiswa,cardTutor;
+    Button btnAbout;
 
     @Nullable
     @Override
@@ -30,6 +32,7 @@ public class HomeFragment extends Fragment {
         cardJadwal = view.findViewById(R.id.cardJadwal);
         cardSiswa = view.findViewById(R.id.cardSiswa);
         cardTutor = view.findViewById(R.id.cardTutor);
+        btnAbout = view.findViewById(R.id.buttonAbout);
 
         cardJadwal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +54,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), TutorActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AboutActivity.class);
                 startActivity(intent);
             }
         });

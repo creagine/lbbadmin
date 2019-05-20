@@ -98,13 +98,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:text="Jurusan" />
+                android:text="Jenjang" />
 
             <Spinner
                 android:id="@+id/spinnerJurusan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/jurusan" />
+                android:entries="@array/jenjang" />
 
             <TextView
                 android:id="@+id/textView"
@@ -234,7 +234,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="#2699FB"
         android:text="Cancel"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -246,7 +248,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="#2699FB"
         android:text="Save"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/buttonCancelSiswa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

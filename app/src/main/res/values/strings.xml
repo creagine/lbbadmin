@@ -18,6 +18,24 @@
         <item>Classical Piano</item>
     </string-array>
 
+    <string-array name="ruang">
+        <item>Pilih ruang</item>
+        <item>Ruang 1</item>
+        <item>Ruang 2</item>
+        <item>Ruang 3</item>
+        <item>Ruang 4</item>
+    </string-array>
+
+    <string-array name="jenjang">
+        <item>Pilih jenjang</item>
+        <item>Kelas 7</item>
+        <item>Kelas 8</item>
+        <item>Kelas 9</item>
+        <item>Kelas 10</item>
+        <item>Kelas 11</item>
+        <item>Kelas 12</item>
+    </string-array>
+
     <string-array name="hari">
         <item>Senin</item>
         <item>Selasa</item>
@@ -54,59 +72,59 @@
         <item>19.30-20.00</item>
     </string-array>
 
-        <string-array name="gradeKeyboard">
-            <item>Prepatory</item>
-            <item>1A</item>
-            <item>1B</item>
-            <item>2A</item>
-            <item>2B</item>
-            <item>3</item>
-            <item>4</item>
-            <item>Hobby</item>
-        </string-array>
+    <string-array name="gradeKeyboard">
+        <item>Prepatory</item>
+        <item>1A</item>
+        <item>1B</item>
+        <item>2A</item>
+        <item>2B</item>
+        <item>3</item>
+        <item>4</item>
+        <item>Hobby</item>
+    </string-array>
 
-        <string-array name="gradeVocal">
-            <item>Prep A</item>
-            <item>Prep B</item>
-            <item>1A</item>
-            <item>1B</item>
-            <item>2A</item>
-            <item>2B</item>
-            <item>3</item>
-            <item>4</item>
-            <item>Hobby</item>
-        </string-array>
+    <string-array name="gradeVocal">
+        <item>Prep A</item>
+        <item>Prep B</item>
+        <item>1A</item>
+        <item>1B</item>
+        <item>2A</item>
+        <item>2B</item>
+        <item>3</item>
+        <item>4</item>
+        <item>Hobby</item>
+    </string-array>
 
-        <string-array name="gradePopularPiano">
-            <item>Prep A</item>
-            <item>Prep B</item>
-            <item>1A</item>
-            <item>1B</item>
-            <item>2A</item>
-            <item>2B</item>
-            <item>3</item>
-            <item>4</item>
-            <item>5</item>
-            <item>6</item>
-            <item>7</item>
-            <item>8</item>
-            <item>Hobby</item>
-        </string-array>
+    <string-array name="gradePopularPiano">
+        <item>Prep A</item>
+        <item>Prep B</item>
+        <item>1A</item>
+        <item>1B</item>
+        <item>2A</item>
+        <item>2B</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>Hobby</item>
+    </string-array>
 
-        <string-array name="gradeClassicalPiano">
-            <item>Prep A</item>
-            <item>Prep B</item>
-            <item>1A</item>
-            <item>1B</item>
-            <item>2A</item>
-            <item>2B</item>
-            <item>3</item>
-            <item>4</item>
-            <item>5</item>
-            <item>6</item>
-            <item>7</item>
-            <item>8A</item>
-            <item>8B</item>
-        </string-array>
+    <string-array name="gradeClassicalPiano">
+        <item>Prep A</item>
+        <item>Prep B</item>
+        <item>1A</item>
+        <item>1B</item>
+        <item>2A</item>
+        <item>2B</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8A</item>
+        <item>8B</item>
+    </string-array>
 
 </resources>

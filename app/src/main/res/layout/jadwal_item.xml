@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="85dp"
+    android:layout_height="wrap_content"
     android:layout_gravity="center_vertical"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
@@ -29,7 +29,7 @@
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Siswa :"
+                android:text="Nama siswa : "
                 android:textSize="18sp" />
 
             <TextView
@@ -38,7 +38,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="nama"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -51,7 +52,7 @@
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tutor : "
+                android:text="Guru/Ketua kelompok : "
                 android:textSize="18sp" />
 
             <TextView
@@ -73,7 +74,7 @@
                 android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jurusan : "
+                android:text="Jenjang : "
                 android:textSize="18sp" />
 
             <TextView
