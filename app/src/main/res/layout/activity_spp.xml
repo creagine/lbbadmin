@@ -7,14 +7,14 @@
     tools:context=".SiswaActivity">
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/buttonAddTagihan"
+        android:id="@+id/buttonAddSiswa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
         app:backgroundTint="@color/buttonColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_assignment_white_24dp"
+        app:srcCompat="@drawable/ic_action_addperson"
         app:useCompatPadding="true" />
 
     <android.support.v7.widget.RecyclerView

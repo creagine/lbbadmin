@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //TODO tambahin auth
+
         // kita set default nya Home Fragment
         loadFragment(new HomeFragment());
         // inisialisasi BottomNavigaionView

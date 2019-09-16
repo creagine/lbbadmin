@@ -25,8 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class AddTutorActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnSave, btnCancel;
-    private EditText editTextNamaTutor, edtEmailTutor, edtPasswordTutor, edtConfirmTutor;
-    private Spinner spinnerJurusan;
+    private EditText editTextNamaTutor, edtEmailTutor, edtPasswordTutor, edtConfirmTutor,
+            edtJurusanTutor;
     private ProgressBar progressBar;
 
     private FirebaseAuth mAuth;
@@ -57,7 +57,7 @@ public class AddTutorActivity extends AppCompatActivity implements View.OnClickL
         edtEmailTutor = findViewById(R.id.editTextEmail);
         edtPasswordTutor = findViewById(R.id.editTextPassword);
         edtConfirmTutor = findViewById(R.id.editTextConfirmPassword);
-        spinnerJurusan = findViewById(R.id.spinner);
+        edtJurusanTutor = findViewById(R.id.editTextJurusanTutor);
         btnSave = findViewById(R.id.buttonSaveTutor);
         btnCancel = findViewById(R.id.buttonCancelTutor);
         progressBar = findViewById(R.id.progressBar2);
@@ -85,7 +85,7 @@ public class AddTutorActivity extends AppCompatActivity implements View.OnClickL
         final String confirmTutor = edtConfirmTutor.getText().toString();
         final String searchname = namaTutor.toLowerCase().replace(" ", "");
 
-        final String jurusan = spinnerJurusan.getSelectedItem().toString();
+        final String jurusan = edtJurusanTutor.getText().toString();
 
         if (TextUtils.isEmpty(namaTutor)) {
             Toast.makeText(getApplicationContext(), "Masukkan nama!", Toast.LENGTH_SHORT).show();

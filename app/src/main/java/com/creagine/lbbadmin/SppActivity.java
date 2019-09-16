@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.creagine.lbbadmin.Interface.ItemClickListener;
 import com.creagine.lbbadmin.Model.Siswa;
@@ -19,20 +18,27 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SiswaActivity extends AppCompatActivity implements View.OnClickListener {
+import java.util.ArrayList;
+import java.util.List;
+
+public class SppActivity extends AppCompatActivity implements View.OnClickListener {
 
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
-    private FloatingActionButton btnAddSiswa;
+    private FloatingActionButton btnAddTagihan;
 
     FirebaseRecyclerAdapter<Siswa, SiswaViewHolder> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_siswa);
+        setContentView(R.layout.activity_spp);
 
-        btnAddSiswa = findViewById(R.id.buttonAddSiswa);
+        //TODO SPP activity isinya list nama siswa - detail SPP siswa perbulan, referensinya coba
+        // lihat lembaran SPP yg dikasih sama citra, sepertinya akan ada fitur status spp sudah
+        // dibayar atau belum
+
+        btnAddTagihan = findViewById(R.id.buttonAddTagihan);
         recyclerView = findViewById(R.id.recyclerViewSiswa);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -40,7 +46,7 @@ public class SiswaActivity extends AppCompatActivity implements View.OnClickList
 
         fetch();
 
-        btnAddSiswa.setOnClickListener(this);
+        btnAddTagihan.setOnClickListener(this);
 
     }
 
@@ -64,6 +70,7 @@ public class SiswaActivity extends AppCompatActivity implements View.OnClickList
 
                 final Siswa clickItem = model;
 
+                //TODO ketika di click masuk ke halaman detail spp siswa isinya kumpulan status dan tagihan
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
@@ -97,8 +104,8 @@ public class SiswaActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         int i = view.getId();
-        if (i == R.id.buttonAddSiswa){
-            Intent intent = new Intent(SiswaActivity.this, AddSiswaActivity.class);
+        if (i == R.id.buttonAddTagihan){
+            Intent intent = new Intent(SppActivity.this, AddSiswaActivity.class);
             startActivity(intent);
         }
     }

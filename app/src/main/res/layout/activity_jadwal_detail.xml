@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".JadwalDetailActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nama siswa"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textViewNamaSiswaDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="nama"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nama Tutor"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textViewNamaTutorDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="nama tutor"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jurusan"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textViewJurusanDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="jurusan"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Grade"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textViewGradeDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Grade"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Harga"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textViewHargaDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="harga"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hari"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textViewHariDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="hari"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jam"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textViewJamDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="jam"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tanggal"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textViewTanggalDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="tanggal"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ruangan"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textViewRuanganDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ruangan"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+</LinearLayout>

@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.creagine.lbbadmin.Common.Common;
 import com.creagine.lbbadmin.Interface.ItemClickListener;
 import com.creagine.lbbadmin.Model.Jadwal;
 import com.creagine.lbbadmin.ViewHolder.JadwalViewHolder;
@@ -33,6 +34,8 @@ public class JadwalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jadwal);
+
+        //TODO fitur filter pake dropdown parameternya ruang, tutor, siswa, jurusan, hari
 
         btnAddJadwal = findViewById(R.id.buttonAddJadwal);
         btnFilterJadwal = findViewById(R.id.buttonFilterJadwal);
@@ -90,13 +93,14 @@ public class JadwalActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
 
-//                        //Get CategoryId and send to new Activity
-//                        Intent serviceList = new Intent(BarbershopActivity.this, BarbermanActivity.class);
-//
-//                        //When user select shop, we will save shop id to select service of this shop
-//                        Common.serviceSelected = adapter.getRef(position).getKey();
-//
-//                        startActivity(serviceList);
+                        //Get CategoryId and send to new Activity
+                        Intent jadwalList = new Intent(JadwalActivity.this, JadwalDetailActivity.class);
+
+                        //When user select shop, we will save shop id to select service of this shop
+                        Common.jadwalselected = adapter.getRef(position).getKey();
+
+                        startActivity(jadwalList);
+                        finish();
 
                     }
                 });
