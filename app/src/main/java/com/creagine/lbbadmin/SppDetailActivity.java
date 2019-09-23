@@ -80,7 +80,7 @@ public class SppDetailActivity extends AppCompatActivity {
 
                 final Tagihan clickItem = model;
 
-                //TODO ketika di click masuk ke halaman detail tagihan siswa isinya merubah status
+                //TODO ketika di click masuk ke halaman detail tagihan siswa isinya sesuai add tagihan, tombol tagihan lunas
 //                viewHolder.setItemClickListener(new ItemClickListener() {
 //                    @Override
 //                    public void onClick(View view, int position, boolean isLongClick) {

@@ -17,7 +17,11 @@ import com.creagine.lbbadmin.Model.Siswa;
 import com.creagine.lbbadmin.ViewHolder.SiswaViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +30,8 @@ public class SppActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
+
+    private String keySiswa;
 
     FirebaseRecyclerAdapter<Siswa, SiswaViewHolder> adapter;
 
@@ -65,7 +71,6 @@ public class SppActivity extends AppCompatActivity {
 
                 final Siswa clickItem = model;
 
-                //TODO ketika di click masuk ke halaman detail spp siswa isinya kumpulan status dan tagihan
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
@@ -74,7 +79,9 @@ public class SppActivity extends AppCompatActivity {
                         Intent intent = new Intent(SppActivity.this, SppDetailActivity.class);
 
                         //When user select shop, we will save shop id to select service of this shop
-                        Common.siswaSelected = adapter.getRef(position).getKey();
+                        keySiswa = adapter.getRef(position).getKey();
+
+                        getDataSiswa();
 
                         startActivity(intent);
 
@@ -94,6 +101,28 @@ public class SppActivity extends AppCompatActivity {
 
         adapter.startListening();
         recyclerView.setAdapter(adapter);
+    }
+
+    private void getDataSiswa(){
+
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Siswa");
+
+        usersRef.child(keySiswa)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        Siswa selectedsiswa = dataSnapshot.getValue(Siswa.class);
+                        Common.siswaSelected = selectedsiswa;
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
     }
 
     @Override

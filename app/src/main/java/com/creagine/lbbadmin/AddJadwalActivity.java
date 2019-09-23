@@ -290,7 +290,43 @@ public class AddJadwalActivity extends AppCompatActivity implements View.OnClick
         String ruang = spinnerRuang.getSelectedItem().toString();
 
         if (TextUtils.isEmpty(namaSiswa)) {
-            Toast.makeText(getApplicationContext(), "Masukkan nama!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Masukkan nama siswa!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+            return;
+        }
+
+        if (TextUtils.isEmpty(tutor)) {
+            Toast.makeText(getApplicationContext(), "Masukkan nama tutor!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+            return;
+        }
+        if (TextUtils.isEmpty(hari)) {
+            Toast.makeText(getApplicationContext(), "Masukkan hari!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+            return;
+        }
+        if (TextUtils.isEmpty(grade)) {
+            Toast.makeText(getApplicationContext(), "Masukkan grade!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+            return;
+        }
+        if (TextUtils.isEmpty(harga)) {
+            Toast.makeText(getApplicationContext(), "Masukkan harga!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+            return;
+        }
+        if (TextUtils.isEmpty(jurusan)) {
+            Toast.makeText(getApplicationContext(), "Masukkan jurusan!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+            return;
+        }
+        if (TextUtils.isEmpty(jam)) {
+            Toast.makeText(getApplicationContext(), "Masukkan jam!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+            return;
+        }
+        if (TextUtils.isEmpty(ruang)) {
+            Toast.makeText(getApplicationContext(), "Masukkan ruang!", Toast.LENGTH_SHORT).show();
             progressBar.setVisibility(View.GONE);
             return;
         }

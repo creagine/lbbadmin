@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setContentView(R.layout.activity_main);
 
         //TODO tambahin auth
+        //TODO tambahin tombol ke halaman notif di pojok kanan atas
 
         // kita set default nya Home Fragment
         loadFragment(new HomeFragment());
