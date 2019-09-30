@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FeeTutorActivity"></activity>
+        <activity android:name=".FeeTutorDetail"></activity>
+        <activity android:name=".TagihanDetailActivity" />
+        <activity android:name=".AddFeeTutor" />
+        <activity android:name=".FeeTutorActivity" />
         <activity android:name=".KonfirmasiPembayaranActivity" />
         <activity android:name=".NotifActivity" />
         <activity android:name=".SppDetailActivity" />
