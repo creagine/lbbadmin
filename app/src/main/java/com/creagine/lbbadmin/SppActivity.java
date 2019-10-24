@@ -40,8 +40,6 @@ public class SppActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spp);
 
-        //TODO test spp
-
         recyclerView = findViewById(R.id.recyclerViewSiswa);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);

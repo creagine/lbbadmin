@@ -22,7 +22,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SppDetailActivity extends AppCompatActivity {
 
-    //TODO test detail spp
     private TextView txtNama, txtEmail, txtJurusan;
 
     private FloatingActionButton btnAddTagihan;
@@ -77,7 +76,7 @@ public class SppDetailActivity extends AppCompatActivity {
         FirebaseRecyclerOptions<Tagihan> options = new FirebaseRecyclerOptions.Builder<Tagihan>()
                 .setQuery(FirebaseDatabase.getInstance()
                                 .getReference()
-                                .child("Spp")
+                                .child("Tagihan")
                         ,Tagihan.class)
                 .build();
 

@@ -100,7 +100,6 @@ public class JadwalActivity extends AppCompatActivity {
                         Common.jadwalSelected = adapter.getRef(position).getKey();
 
                         startActivity(jadwalList);
-                        finish();
 
                     }
                 });
@@ -120,4 +119,10 @@ public class JadwalActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
 }

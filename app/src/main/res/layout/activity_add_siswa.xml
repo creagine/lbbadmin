@@ -16,7 +16,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSaveSiswa"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,7 +30,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSaveSiswa"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -93,18 +93,13 @@
                 android:hint="Nama siswa"
                 android:inputType="textPersonName|textCapWords" />
 
-            <TextView
-                android:id="@+id/textView2"
+            <EditText
+                android:id="@+id/editTextJurusan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
-                android:text="Jurusan" />
-
-            <Spinner
-                android:id="@+id/spinnerJurusan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:entries="@array/jurusan" />
+                android:ems="10"
+                android:hint="Jurusan"
+                android:inputType="textPersonName" />
 
             <TextView
                 android:id="@+id/textView"
@@ -126,39 +121,6 @@
                 android:ems="10"
                 android:hint="Tempat lahir"
                 android:inputType="textPersonName|textCapWords" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/editTextTanggalLahir"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="Tanggal lahir"
-                    android:inputType="phone" />
-
-                <EditText
-                    android:id="@+id/editTextBulanLahir"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="Bulan (ex : 01)"
-                    android:inputType="phone" />
-
-                <EditText
-                    android:id="@+id/editTextTahunLahir"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="Tahun"
-                    android:inputType="phone" />
-            </LinearLayout>
 
             <EditText
                 android:id="@+id/editTextAlamat"
@@ -224,30 +186,58 @@
                 android:hint="Nomor HP/WA"
                 android:inputType="phone" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editTextTanggalLahir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Tanggal lahir"
+                    android:inputType="phone" />
+
+                <EditText
+                    android:id="@+id/editTextBulanLahir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Bulan (ex : 01)"
+                    android:inputType="phone" />
+
+                <EditText
+                    android:id="@+id/editTextTahunLahir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Tahun"
+                    android:inputType="phone" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonSaveSiswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Save" />
+
+            <Button
+                android:id="@+id/buttonCancelSiswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Cancel" />
+
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/buttonCancelSiswa"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/buttonSaveSiswa"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Save"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCancelSiswa"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

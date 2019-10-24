@@ -75,7 +75,7 @@
             android:layout_marginRight="8dp"
             android:ems="10"
             android:hint="Nama tutor"
-            android:inputType="textPersonName"
+            android:inputType="textPersonName|textCapWords"
             android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

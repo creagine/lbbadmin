@@ -8,138 +8,364 @@
     android:orientation="vertical"
     tools:context=".JadwalDetailActivity">
 
-    <TextView
-        android:id="@+id/textView3"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nama siswa"
-        android:textAlignment="center" />
+        android:layout_margin="8dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="10dp"
+        app:contentPadding="8dp">
 
-    <TextView
-        android:id="@+id/textViewNamaSiswaDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="nama"
-        android:textAlignment="center"
-        android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nama Tutor"
-        android:textAlignment="center" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textViewNamaTutorDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="nama tutor"
-        android:textAlignment="center"
-        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama siswa" />
 
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Jurusan"
-        android:textAlignment="center" />
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Tutor" />
 
-    <TextView
-        android:id="@+id/textViewJurusanDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="jurusan"
-        android:textAlignment="center"
-        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jurusan" />
 
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Grade"
-        android:textAlignment="center" />
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Grade" />
 
-    <TextView
-        android:id="@+id/textViewGradeDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Grade"
-        android:textAlignment="center"
-        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Harga" />
 
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Harga"
-        android:textAlignment="center" />
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hari" />
 
-    <TextView
-        android:id="@+id/textViewHargaDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="harga"
-        android:textAlignment="center"
-        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jam" />
 
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hari"
-        android:textAlignment="center" />
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tanggal" />
 
-    <TextView
-        android:id="@+id/textViewHariDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="hari"
-        android:textAlignment="center"
-        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ruangan" />
 
-    <TextView
-        android:id="@+id/textView24"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Jam"
-        android:textAlignment="center" />
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/textViewJamDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="jam"
-        android:textAlignment="center"
-        android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tanggal"
-        android:textAlignment="center" />
+                <TextView
+                    android:id="@+id/textViewNamaSiswaDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="nama"
+                    android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textViewTanggalDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="tanggal"
-        android:textAlignment="center"
-        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textViewNamaTutorDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="nama tutor"
+                    android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ruangan"
-        android:textAlignment="center" />
+                <TextView
+                    android:id="@+id/textViewJurusanDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="jurusan"
+                    android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textViewRuanganDetail"
+                <TextView
+                    android:id="@+id/textViewGradeDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="grade"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewHargaDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="harga"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewHariDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="hari"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewJamDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="jam"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewTanggalDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="tanggal"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewRuanganDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ruangan"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ruangan"
-        android:textAlignment="center"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="10dp"
+        app:contentPadding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Status presensi siswa"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spinnerBulan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:entries="@array/bulan" />
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/CardViewPekan1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:contentPadding="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pekan 1"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewStatusPekan1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Belum Terlaksana"
+                        android:textColor="#FF0000"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/CardViewPekan2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:contentPadding="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pekan 2"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewStatusPekan2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Belum Terlaksana"
+                        android:textColor="#FF0000"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/CardViewPekan3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:contentPadding="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pekan 3"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewStatusPekan3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Belum Terlaksana"
+                        android:textColor="#FF0000"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/CardViewPekan4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:contentPadding="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pekan 4"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewStatusPekan4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Belum Terlaksana"
+                        android:textColor="#FF0000"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/CardViewPekanPengganti"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:contentPadding="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pekan Pengganti"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewStatusPekanPengganti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tidak Dilaksanakan"
+                        android:textColor="#FF0000"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
 </LinearLayout>

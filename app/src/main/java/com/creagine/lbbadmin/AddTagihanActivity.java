@@ -43,7 +43,6 @@ public class AddTagihanActivity extends AppCompatActivity {
 
         tagihanRef = FirebaseDatabase.getInstance().getReference("Tagihan");
 
-        //TODO test halaman add tagihan
         widgetinit();
 
         btnTanggal.setOnClickListener(new View.OnClickListener() {
@@ -68,9 +67,8 @@ public class AddTagihanActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent (AddTagihanActivity.this, SppDetailActivity.class);
-                startActivity(intent);
                 finish();
+
             }
         });
 

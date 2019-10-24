@@ -9,11 +9,9 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.creagine.lbbadmin.FeeTutorActivity;
 import com.creagine.lbbadmin.JadwalActivity;
-import com.creagine.lbbadmin.MainActivity;
 import com.creagine.lbbadmin.R;
 import com.creagine.lbbadmin.SiswaActivity;
 import com.creagine.lbbadmin.SppActivity;
@@ -41,7 +39,6 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), JadwalActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -50,7 +47,6 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), SiswaActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -59,7 +55,6 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), TutorActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -68,7 +63,6 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), SppActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -77,10 +71,10 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), FeeTutorActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
         return view;
     }
+
 }

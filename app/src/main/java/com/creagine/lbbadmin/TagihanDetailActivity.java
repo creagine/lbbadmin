@@ -25,8 +25,6 @@ public class TagihanDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tagihan_detail);
 
-        //TODO test detail tagihan
-
         txtNoTagihan = findViewById(R.id.textViewNoTagihanDetail);
         txtDeskripsiTagihan = findViewById(R.id.textViewDeskripsiTagihanDetail);
         txtNominalTagihan = findViewById(R.id.textViewNominalTagihanDetail);
@@ -41,6 +39,9 @@ public class TagihanDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setBelumLunas();
+
+                finish();
+
             }
         });
 
@@ -48,6 +49,9 @@ public class TagihanDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setLunas();
+
+                finish();
+
             }
         });
 
@@ -92,6 +96,8 @@ public class TagihanDetailActivity extends AppCompatActivity {
 
         tagihanRef.setValue("Belum Lunas");
 
+
+
     }
 
     private void setLunas(){
@@ -100,6 +106,8 @@ public class TagihanDetailActivity extends AppCompatActivity {
                 .child(Common.tagihanSelected).child("statusTagihan");
 
         tagihanRef.setValue("Lunas");
+
+        getDataTagihan();
 
     }
 

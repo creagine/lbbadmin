@@ -28,9 +28,9 @@ public class AddSiswaActivity extends AppCompatActivity implements View.OnClickL
     private EditText editTextNamaSiswa,editTextTempatLahir,editTextTanggalLahir,editTextBulanLahir,
             editTextTahunLahir,editTextAlamat,editTextKecamatan,editTextKota,editTextProvinsi,
             editTextAgama,editTextKebangsaan,editTextNomorTelp,editTextNomorHp,editTextEmail,
-            editTextPassword,editTextConfirmPassword;
+            editTextPassword,editTextConfirmPassword, edtJurusan;
 
-    private Spinner spinnerJurusan,spinnerJenisKelamin;
+    private Spinner spinnerJenisKelamin;
 
     private ProgressBar progressBar;
 
@@ -74,7 +74,7 @@ public class AddSiswaActivity extends AppCompatActivity implements View.OnClickL
         editTextPassword = findViewById(R.id.editTextPassword);
         editTextConfirmPassword = findViewById(R.id.editTextConfirmPassword);
         progressBar = findViewById(R.id.progressBar);
-        spinnerJurusan = findViewById(R.id.spinnerJurusan);
+        edtJurusan = findViewById(R.id.editTextJurusan);
         spinnerJenisKelamin = findViewById(R.id.spinnerJenisKelamin);
         btnSave = findViewById(R.id.buttonSaveSiswa);
         btnCancel = findViewById(R.id.buttonCancelSiswa);
@@ -86,8 +86,6 @@ public class AddSiswaActivity extends AppCompatActivity implements View.OnClickL
         if ( i == R.id.buttonSaveSiswa){
             saveSiswa();
         } else if (i == R.id.buttonCancelSiswa){
-            Intent intent = new Intent (AddSiswaActivity.this, SiswaActivity.class);
-            startActivity(intent);
             finish();
         }
     }
@@ -113,7 +111,7 @@ public class AddSiswaActivity extends AppCompatActivity implements View.OnClickL
         final String confirmPassword = editTextConfirmPassword.getText().toString();
 
         final String jenisKelamin = spinnerJenisKelamin.getSelectedItem().toString();
-        final String jurusan = spinnerJurusan.getSelectedItem().toString();
+        final String jurusan = edtJurusan.getText().toString();
 
         final String lahir = tanggalLahir + "-" + bulanLahir + "-" + tahunLahir;
 
@@ -264,6 +262,11 @@ public class AddSiswaActivity extends AppCompatActivity implements View.OnClickL
                 nomorHpSiswa, emailSiswa, passwordSiswa);
         siswaRef.child(siswaId).setValue(newSiswa);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
 }

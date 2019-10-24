@@ -2,7 +2,6 @@ package com.creagine.lbbadmin;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,33 +9,37 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
+import com.creagine.lbbadmin.Common.Common;
 import com.creagine.lbbadmin.Interface.ItemClickListener;
 import com.creagine.lbbadmin.Model.Tutor;
 import com.creagine.lbbadmin.ViewHolder.TutorViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class TutorActivity extends AppCompatActivity implements View.OnClickListener {
+public class FeeTutorActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
-    private FloatingActionButton btnAddTutor;
-    private TextView txtNamaTutor, txtJurusanTutor;
+
+    private String keyTutor;
 
     FirebaseRecyclerAdapter<Tutor, TutorViewHolder> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tutor);
+        setContentView(R.layout.activity_fee_tutor);
 
-        btnAddTutor = findViewById(R.id.buttonAddTutor);
-        txtNamaTutor = findViewById(R.id.textViewNamaTutor);
-        txtJurusanTutor = findViewById(R.id.textViewJurusanTutor);
+        //TODO fee tutor activity
+        // add fee tutor
+        // disini isinya list tutor true fee tutor detail isinya seperti spp siswa tapi fee
+
         recyclerView = findViewById(R.id.recyclerViewTutor);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -44,13 +47,11 @@ public class TutorActivity extends AppCompatActivity implements View.OnClickList
 
         fetch();
 
-        btnAddTutor.setOnClickListener(this);
-
     }
 
     private void fetch() {
 
-//firebase recycler, model Shop
+        //firebase recycler, model Shop
         FirebaseRecyclerOptions<Tutor> options = new FirebaseRecyclerOptions.Builder<Tutor>()
                 .setQuery(FirebaseDatabase.getInstance()
                                 .getReference()
@@ -72,13 +73,15 @@ public class TutorActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
 
-//                        //Get CategoryId and send to new Activity
-//                        Intent serviceList = new Intent(BarbershopActivity.this, BarbermanActivity.class);
-//
-//                        //When user select shop, we will save shop id to select service of this shop
-//                        Common.serviceSelected = adapter.getRef(position).getKey();
-//
-//                        startActivity(serviceList);
+                        //Get CategoryId and send to new Activity
+                        Intent intent = new Intent(FeeTutorActivity.this, FeeTutorDetailActivity.class);
+
+                        //When user select shop, we will save shop id to select service of this shop
+                        keyTutor = adapter.getRef(position).getKey();
+
+                        getDataTutor();
+
+                        startActivity(intent);
 
                     }
                 });
@@ -98,34 +101,26 @@ public class TutorActivity extends AppCompatActivity implements View.OnClickList
         recyclerView.setAdapter(adapter);
     }
 
-    @Override
-    public void onClick(View view) {
-        int i = view.getId();
-        if (i == R.id.buttonAddTutor){
-            Intent intent = new Intent(TutorActivity.this, AddTutorActivity.class);
-            startActivity(intent);
-        }
+    private void getDataTutor(){
 
-    }
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Tutor");
 
-    @Override
-    public void onStart() {
-        super.onStart();
+        usersRef.child(keyTutor)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
 
-        adapter.startListening();
+                        Tutor selectedTutor = dataSnapshot.getValue(Tutor.class);
+                        Common.tutorSelected = selectedTutor;
 
-    }
+                    }
 
-    @Override
-    public void onStop() {
-        super.onStop();
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
 
-        adapter.startListening();
-    }
+                    }
+                });
 
-    @Override
-    public void onBackPressed() {
-        finish();
     }
 
 }

@@ -117,4 +117,9 @@ public class SiswaActivity extends AppCompatActivity implements View.OnClickList
         adapter.stopListening();
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
 }

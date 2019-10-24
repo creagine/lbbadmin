@@ -72,8 +72,7 @@ public class AddTutorActivity extends AppCompatActivity implements View.OnClickL
             saveTutor();
 
         } else if (i == R.id.buttonCancelTutor){
-            Intent intent = new Intent (AddTutorActivity.this, TutorActivity.class);
-            startActivity(intent);
+            finish();
         }
     }
 
@@ -154,6 +153,11 @@ public class AddTutorActivity extends AppCompatActivity implements View.OnClickL
 
         tutorRef.child(tutorId).setValue(newTutor);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
 }
