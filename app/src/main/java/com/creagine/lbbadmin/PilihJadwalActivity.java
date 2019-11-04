@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 
 import com.creagine.lbbadmin.Common.Common;
 import com.creagine.lbbadmin.Interface.ItemClickListener;
-import com.creagine.lbbadmin.Model.Tutor;
-import com.creagine.lbbadmin.ViewHolder.TutorViewHolder;
+import com.creagine.lbbadmin.Model.Jadwal;
+import com.creagine.lbbadmin.ViewHolder.JadwalViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
@@ -22,21 +22,19 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class FeeTutorActivity extends AppCompatActivity {
+public class PilihJadwalActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
 
-    private String keyTutor;
-
-    FirebaseRecyclerAdapter<Tutor, TutorViewHolder> adapter;
+    FirebaseRecyclerAdapter<Jadwal, JadwalViewHolder> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fee_tutor);
+        setContentView(R.layout.activity_pilih_jadwal);
 
-        recyclerView = findViewById(R.id.recyclerViewTutor);
+        recyclerView = findViewById(R.id.recyclerViewJadwal);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
@@ -48,36 +46,37 @@ public class FeeTutorActivity extends AppCompatActivity {
     private void fetch() {
 
         //firebase recycler, model Shop
-        FirebaseRecyclerOptions<Tutor> options = new FirebaseRecyclerOptions.Builder<Tutor>()
+        FirebaseRecyclerOptions<Jadwal> options = new FirebaseRecyclerOptions.Builder<Jadwal>()
                 .setQuery(FirebaseDatabase.getInstance()
                                 .getReference()
-                                .child("Tutor")
-                        ,Tutor.class)
+                                .child("Jadwal")
+                        ,Jadwal.class)
                 .build();
 
         //recycler adapter shop - ShopViewHolder
-        adapter = new FirebaseRecyclerAdapter<Tutor, TutorViewHolder>(options) {
+        adapter = new FirebaseRecyclerAdapter<Jadwal, JadwalViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull TutorViewHolder viewHolder, int position, @NonNull Tutor model) {
+            protected void onBindViewHolder(@NonNull JadwalViewHolder viewHolder, int position, @NonNull Jadwal model) {
 
-                viewHolder.txtNamaTutor.setText(model.getNamaTutor());
-                viewHolder.txtJurusanTutor.setText(model.getJurusanTutor());
+                viewHolder.siswaNama.setText(model.getNamaSiswa());
+                viewHolder.siswaJurusan.setText(model.getJurusan());
+                viewHolder.tutorNama.setText(model.getTutor());
 
-                final Tutor clickItem = model;
+                final Jadwal clickItem = model;
 
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
 
                         //Get CategoryId and send to new Activity
-                        Intent intent = new Intent(FeeTutorActivity.this, FeeTutorDetailActivity.class);
+                        Intent jadwalList = new Intent(PilihJadwalActivity.this, AddFeeTutorActivity.class);
 
                         //When user select shop, we will save shop id to select service of this shop
-                        keyTutor = adapter.getRef(position).getKey();
+                        Common.keyFeeJadwalSelected = adapter.getRef(position).getKey();
 
-                        getDataTutor();
+                        getDataJadwal();
 
-                        startActivity(intent);
+                        startActivity(jadwalList);
 
                     }
                 });
@@ -85,29 +84,30 @@ public class FeeTutorActivity extends AppCompatActivity {
 
             @NonNull
             @Override
-            public TutorViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            public JadwalViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 View itemView = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.tutor_item, parent, false);
-                return new TutorViewHolder(itemView) {
+                        .inflate(R.layout.jadwal_item, parent, false);
+                return new JadwalViewHolder(itemView) {
                 };
             }
         };
 
         adapter.startListening();
         recyclerView.setAdapter(adapter);
+
     }
 
-    private void getDataTutor(){
+    private void getDataJadwal(){
 
-        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Tutor");
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Jadwal");
 
-        usersRef.child(keyTutor)
+        usersRef.child(Common.keyFeeJadwalSelected)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
-                        Tutor selectedTutor = dataSnapshot.getValue(Tutor.class);
-                        Common.tutorSelected = selectedTutor;
+                        Jadwal selectedJadwal = dataSnapshot.getValue(Jadwal.class);
+                        Common.feeJadwalSelected = selectedJadwal;
 
                     }
 
@@ -119,4 +119,8 @@ public class FeeTutorActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }

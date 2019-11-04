@@ -35,8 +35,6 @@ public class JadwalDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jadwal_detail);
 
-        //TODO masukin presensi dan claim fee
-
         widgetInit();
 
         presensiRef = FirebaseDatabase.getInstance().getReference("Presensi");

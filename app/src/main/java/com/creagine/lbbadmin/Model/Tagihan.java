@@ -2,14 +2,15 @@ package com.creagine.lbbadmin.Model;
 
 public class Tagihan {
 
-    String noTagihan, deskripsiTagihan, nominalTagihan, tanggalJatuhTempoTagihan, namaSiswaTagihan, statusTagihan;
-
+    String noTagihan, deskripsiTagihan, nominalTagihan, tanggalJatuhTempoTagihan, namaSiswaTagihan,
+            statusTagihan;
 
     public Tagihan() {
     }
 
 
-    public Tagihan(String noTagihan, String deskripsiTagihan, String nominalTagihan, String tanggalJatuhTempoTagihan, String namaSiswaTagihan, String statusTagihan) {
+    public Tagihan(String noTagihan, String deskripsiTagihan, String nominalTagihan,
+                   String tanggalJatuhTempoTagihan, String namaSiswaTagihan, String statusTagihan) {
         this.noTagihan = noTagihan;
         this.deskripsiTagihan = deskripsiTagihan;
         this.nominalTagihan = nominalTagihan;

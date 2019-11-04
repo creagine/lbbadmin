@@ -162,4 +162,10 @@ public class AddTagihanActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
+
 }

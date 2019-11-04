@@ -9,10 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PresensiDetailActivity"></activity>
+        <activity android:name=".CekPresensiActivity"></activity>
+        <activity android:name=".PilihJadwalActivity" />
+        <activity android:name=".PresensiDetailActivity" />
         <activity android:name=".FeeTutorDetailActivity" />
         <activity android:name=".TagihanDetailActivity" />
-        <activity android:name=".AddFeeTutor" />
+        <activity android:name=".AddFeeTutorActivity" />
         <activity android:name=".FeeTutorActivity" />
         <activity android:name=".KonfirmasiPembayaranActivity" />
         <activity android:name=".NotifActivity" />
