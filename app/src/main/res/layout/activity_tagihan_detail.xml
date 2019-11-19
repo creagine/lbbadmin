@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TagihanDetailActivity">
+
+    <Button
+        android:id="@+id/buttonKonfirmasiPembayaran"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="konfirmasi pembayaran"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonBatalkanStatusPembayaran"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Batalkan status pembayaran"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/buttonKonfirmasiPembayaran"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textViewNoTagihanDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="no tagihan" />
+
+        <TextView
+            android:id="@+id/textViewDeskripsiTagihanDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="deskripsi tagihan" />
+
+        <TextView
+            android:id="@+id/textViewNominalTagihanDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="nominal tagihan" />
+
+        <TextView
+            android:id="@+id/textViewTanggalTagihanDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tanggal" />
+
+        <TextView
+            android:id="@+id/textViewStatusTagihan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="status tagihan" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

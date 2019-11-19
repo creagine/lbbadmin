@@ -1,0 +1,150 @@
+<resources>
+    <string name="app_name">lbb admin</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="favorite">Favorite</string>
+    <string name="account">Account</string>
+
+    <string-array name="pertemuan">
+        <item>Jumlah pertemuan</item>
+        <item>4</item>
+        <item>8</item>
+    </string-array>
+
+    <string-array name="jenisKelamin">
+        <item>Laki-Laki</item>
+        <item>Perempuan</item>
+    </string-array>
+
+    <string-array name="bulan">
+
+        <item>Pilih bulan</item>
+        <item>Januari</item>
+        <item>Februari</item>
+        <item>Maret</item>
+        <item>April</item>
+        <item>Mei</item>
+        <item>Juni</item>
+        <item>Juli</item>
+        <item>Agustus</item>
+        <item>September</item>
+        <item>Oktober</item>
+        <item>November</item>
+        <item>Desember</item>
+
+    </string-array>
+
+    <string-array name="ruang">
+        <item>Pilih ruangan</item>
+        <item>Ruang 1</item>
+        <item>Ruang 2</item>
+        <item>Ruang 3</item>
+        <item>Ruang 4</item>
+        <item>Ruang 5</item>
+        <item>Ruang 6</item>
+        <item>Ruang 7</item>
+        <item>Ruang 8</item>
+        <item>Ruang 9</item>
+        <item>Ruang 10</item>
+    </string-array>
+
+    <string-array name="jurusan">
+        <item>Pilih jurusan</item>
+        <item>Keyboard</item>
+        <item>Vocal</item>
+        <item>Popular Piano</item>
+        <item>Classical Piano</item>
+    </string-array>
+
+    <string-array name="hari">
+        <item>Senin</item>
+        <item>Selasa</item>
+        <item>Rabu</item>
+        <item>Kamis</item>
+        <item>Jumat</item>
+        <item>Sabtu</item>
+    </string-array>
+
+    <string-array name="jam">
+        <item>08.00-08.30</item>
+        <item>08.30-09.00</item>
+        <item>09.00-09.30</item>
+        <item>09.30-10.00</item>
+        <item>10.00-10.30</item>
+        <item>10.30-11.00</item>
+        <item>11.00-11.30</item>
+        <item>11.30-12.00</item>
+        <item>12.00-12.30</item>
+        <item>12.30-13.00</item>
+        <item>13.00-13.30</item>
+        <item>13.30-14.00</item>
+        <item>14.00-14.30</item>
+        <item>14.30-15.00</item>
+        <item>15.00-15.30</item>
+        <item>15.30-16.00</item>
+        <item>16.00-16.30</item>
+        <item>16.30-17.00</item>
+        <item>17.00-17.30</item>
+        <item>17.30-18.00</item>
+        <item>18.00-18.30</item>
+        <item>18.30-19.00</item>
+        <item>19.00-19.30</item>
+        <item>19.30-20.00</item>
+    </string-array>
+
+    <string-array name="gradeKeyboard">
+        <item>Prepatory</item>
+        <item>1A</item>
+        <item>1B</item>
+        <item>2A</item>
+        <item>2B</item>
+        <item>3</item>
+        <item>4</item>
+        <item>Hobby</item>
+    </string-array>
+
+    <string-array name="gradeVocal">
+        <item>Prep A</item>
+        <item>Prep B</item>
+        <item>1A</item>
+        <item>1B</item>
+        <item>2A</item>
+        <item>2B</item>
+        <item>3</item>
+        <item>4</item>
+        <item>Hobby</item>
+    </string-array>
+
+    <string-array name="gradePopularPiano">
+        <item>Prep A</item>
+        <item>Prep B</item>
+        <item>1A</item>
+        <item>1B</item>
+        <item>2A</item>
+        <item>2B</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>Hobby</item>
+    </string-array>
+
+    <string-array name="gradeClassicalPiano">
+        <item>Prep A</item>
+        <item>Prep B</item>
+        <item>1A</item>
+        <item>1B</item>
+        <item>2A</item>
+        <item>2B</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8A</item>
+        <item>8B</item>
+    </string-array>
+
+</resources>
