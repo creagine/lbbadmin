@@ -76,7 +76,8 @@ public class FeeTutorDetailActivity extends AppCompatActivity {
         FirebaseRecyclerOptions<Fee> options = new FirebaseRecyclerOptions.Builder<Fee>()
                 .setQuery(FirebaseDatabase.getInstance()
                                 .getReference()
-                                .child("Fee")
+                                .child("Fee").orderByChild("namaTutor")
+                                .equalTo(Common.tutorSelected.getNamaTutor())
                         ,Fee.class)
                 .build();
 

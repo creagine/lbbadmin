@@ -38,8 +38,6 @@ public class JadwalDetail8PertemuanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jadwal_detail8_pertemuan);
 
-        //TODO test pertemuan 8x
-
         widgetInit();
 
         presensiRef = FirebaseDatabase.getInstance().getReference("Presensi");

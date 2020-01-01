@@ -34,7 +34,7 @@ public class PilihJadwalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pilih_jadwal);
 
-        recyclerView = findViewById(R.id.recyclerViewJadwal);
+        recyclerView = findViewById(R.id.RecyclerViewJadwal);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
@@ -69,14 +69,17 @@ public class PilihJadwalActivity extends AppCompatActivity {
                     public void onClick(View view, int position, boolean isLongClick) {
 
                         //Get CategoryId and send to new Activity
-                        Intent jadwalList = new Intent(PilihJadwalActivity.this, AddFeeTutorActivity.class);
+                        Intent intent = new Intent(PilihJadwalActivity.this, AddFeeTutorActivity.class);
 
                         //When user select shop, we will save shop id to select service of this shop
                         Common.keyFeeJadwalSelected = adapter.getRef(position).getKey();
 
                         getDataJadwal();
 
-                        startActivity(jadwalList);
+                        intent.putExtra("btnjadwal", "Jadwal sudah dipilih");
+
+                        startActivity(intent);
+                        finish();
 
                     }
                 });

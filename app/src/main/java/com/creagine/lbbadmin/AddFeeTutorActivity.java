@@ -46,16 +46,26 @@ public class AddFeeTutorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_fee_tutor);
 
-        //TODO add fee tutor, halaman ini nanti merupakan respon dari request fee yang dilakukan tutor dari halaman absensi
-        // fee akan dibayar pada akhir bulan sesuai dengan absensi (ex: 3/4 = masuk 3 dari 4x kelas)
-        // x 40% x harga
-        // inputnya (nama siswa, jurusan, grade) = intent list, get harga, get fee, get absensi
-
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
         feeRef = FirebaseDatabase.getInstance().getReference("Fee");
 
         widgetinit();
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+
+            } else {
+                btnPilihJadwal.setText(extras.getString("btnjadwal"));
+            }
+        } else {
+            String strbtnjadwal;
+            strbtnjadwal = (String) savedInstanceState.getSerializable("btnjadwal");
+            btnPilihJadwal.setText(strbtnjadwal);
+        }
+
+
 
         spinnerBulan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -111,6 +121,7 @@ public class AddFeeTutorActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(AddFeeTutorActivity.this, PilihJadwalActivity.class);
                 startActivity(intent);
+//                btnPilihJadwal.setText("Jadwal sudah dipilih");
 
             }
         });
@@ -212,9 +223,11 @@ public class AddFeeTutorActivity extends AppCompatActivity {
         totalKbm = edtTotalPresensi.getText().toString();
         tarif = Common.feeJadwalSelected.getHarga();
 
-        int intPresensi = Integer.parseInt(presensi);
-        int intTotalKbm = Integer.parseInt(totalKbm);
-        int intTarif = Integer.parseInt(tarif);
+        double intPresensi = Integer.parseInt(presensi);
+        double intTotalKbm = Integer.parseInt(totalKbm);
+        double intTarif = Integer.parseInt(tarif);
+
+        //ex: 3/4 = masuk 3 dari 4x kelas) x 40% x harga
         doubleFee = (intPresensi/intTotalKbm)* 0.4 * intTarif;
         String dbFee = doubleFee.toString();
         txtFee.setText(dbFee);

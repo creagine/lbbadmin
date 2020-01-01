@@ -76,7 +76,8 @@ public class SppDetailActivity extends AppCompatActivity {
         FirebaseRecyclerOptions<Tagihan> options = new FirebaseRecyclerOptions.Builder<Tagihan>()
                 .setQuery(FirebaseDatabase.getInstance()
                                 .getReference()
-                                .child("Tagihan")
+                                .child("Tagihan").orderByChild("namaSiswaTagihan")
+                                .equalTo(Common.siswaSelected.getNamaSiswa())
                         ,Tagihan.class)
                 .build();
 

@@ -26,8 +26,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        //TODO gambar icon
-
         cardJadwal = view.findViewById(R.id.cardJadwal);
         cardSiswa = view.findViewById(R.id.cardSiswa);
         cardTutor = view.findViewById(R.id.cardTutor);
