@@ -2,7 +2,6 @@ package com.creagine.lbbadmin;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -25,7 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class AddFeeTutorActivity extends AppCompatActivity {
+public class AddFeeTutorActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText edtNo, edtTahun, edtPresensi, edtTotalPresensi;
     private Spinner spinnerBulan;
@@ -53,21 +52,6 @@ public class AddFeeTutorActivity extends AppCompatActivity {
 
         widgetinit();
 
-        if (savedInstanceState == null) {
-            Bundle extras = getIntent().getExtras();
-            if(extras == null) {
-
-            } else {
-                btnPilihJadwal.setText(extras.getString("btnjadwal"));
-            }
-        } else {
-            String strbtnjadwal;
-            strbtnjadwal = (String) savedInstanceState.getSerializable("btnjadwal");
-            btnPilihJadwal.setText(strbtnjadwal);
-        }
-
-
-
         spinnerBulan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -76,9 +60,6 @@ public class AddFeeTutorActivity extends AppCompatActivity {
                     // get spinner value
                     bulanPembayaran = spinnerBulan.getSelectedItem().toString();
                     Common.bulanFeeSelected = spinnerBulan.getSelectedItem().toString();
-                }else{
-                    // show toast select gender
-                    Toast.makeText(AddFeeTutorActivity.this, "Pilih bulan", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -89,74 +70,17 @@ public class AddFeeTutorActivity extends AppCompatActivity {
             }
         });
 
-        btnTanggalSpp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnTanggalSpp.setOnClickListener(this);
 
-                showDateDialog();
+        btnSubmit.setOnClickListener(this);
 
-            }
-        });
+        btnCancel.setOnClickListener(this);
 
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnPilihJadwal.setOnClickListener(this);
 
-                saveFee();
+        btnPresensi.setOnClickListener(this);
 
-            }
-        });
-
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                finish();
-
-            }
-        });
-
-        btnPilihJadwal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(AddFeeTutorActivity.this, PilihJadwalActivity.class);
-                startActivity(intent);
-//                btnPilihJadwal.setText("Jadwal sudah dipilih");
-
-            }
-        });
-
-        btnPresensi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                //jika jadwal belum dipilih atau key jadwal masih kosong, maka muncul pilih jadwal
-                if(!Common.keyFeeJadwalSelected.equals("")){
-
-                    Intent intent = new Intent(AddFeeTutorActivity.this, CekPresensiActivity.class);
-                    startActivity(intent);
-
-                } else {
-
-                    Toast.makeText(AddFeeTutorActivity.this,
-                            "Pilih jadwal terlebih dahulu", Toast.LENGTH_SHORT).show();
-
-                }
-
-
-
-            }
-        });
-
-        btnHitungFee.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                hitungFee();
-
-            }
-        });
+        btnHitungFee.setOnClickListener(this);
 
     }
 
@@ -169,8 +93,8 @@ public class AddFeeTutorActivity extends AppCompatActivity {
         edtPresensi = findViewById(R.id.editTextJumlahKbm);
         edtTotalPresensi = findViewById(R.id.editTextTotalKbm);
         btnTanggalSpp = findViewById(R.id.buttonTanggalSpp);
-        btnPilihJadwal = findViewById(R.id.buttonPilihJadwal);
-        btnPresensi = findViewById(R.id.buttonPresensi);
+        btnPilihJadwal = findViewById(R.id.buttonPilihJadwalAddFee);
+        btnPresensi = findViewById(R.id.buttonPresensiAddFee);
         btnHitungFee = findViewById(R.id.buttonHitungFee);
         btnSubmit = findViewById(R.id.buttonSubmitAddFee);
         btnCancel = findViewById(R.id.buttonCancelAddFee);
@@ -230,8 +154,9 @@ public class AddFeeTutorActivity extends AppCompatActivity {
 
         //ex: 3/4 = masuk 3 dari 4x kelas) x 40% x harga
         doubleFee = (intPresensi/intTotalKbm)* 0.4 * intTarif;
-        String dbFee = doubleFee.toString();
-        txtFee.setText(dbFee);
+        Long feeDibulatkan = Math.round((doubleFee*100)/100.0f);
+        String dbFee = feeDibulatkan.toString();
+        txtFee.setText("Rp. " + dbFee);
 
     }
 
@@ -239,6 +164,7 @@ public class AddFeeTutorActivity extends AppCompatActivity {
 
         progressBar.setVisibility(View.VISIBLE);
 
+        String idTutor = Common.feeJadwalSelected.getIdTutor();
         String namaSiswa = Common.feeJadwalSelected.getNamaSiswa();
         String namaTutor = Common.feeJadwalSelected.getTutor();
         String noPembayaran = edtNo.getText().toString();
@@ -278,15 +204,18 @@ public class AddFeeTutorActivity extends AppCompatActivity {
             progressBar.setVisibility(View.GONE);
             return;
         }
+        if (bulanPembayaran.equals("Pilih bulan")){
+            Toast.makeText(getApplicationContext(), "Pilih bulan !", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+            return;
+        }
 
 
-        Fee newFee = new Fee(noPembayaran, namaTutor, bulanPembayaran, tahunPembayaran,
-                namaSiswa, jurusan, grade, tarif, fee, presensi, tglSpp);
+        Fee newFee = new Fee(noPembayaran, idTutor, namaTutor, namaSiswa, bulanPembayaran, tahunPembayaran,
+                jurusan, grade, tarif, fee, presensi, tglSpp);
 
         feeRef.child(noPembayaran).setValue(newFee);
 
-        Intent intent = new Intent (AddFeeTutorActivity.this, FeeTutorDetailActivity.class);
-        startActivity(intent);
         finish();
 
     }
@@ -296,5 +225,57 @@ public class AddFeeTutorActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        btnPilihJadwal.setText(Common.btnPilihjadwalSelected);
+    }
 
+    @Override
+    public void onClick(View view) {
+        int i = view.getId();
+
+        if (i == R.id.buttonTanggalSpp){
+
+            showDateDialog();
+
+        } if(i == R.id.buttonSubmitAddFee){
+
+            saveFee();
+
+        } if(i == R.id.buttonCancelAddFee){
+
+            finish();
+
+        } if(i == R.id.buttonPilihJadwalAddFee){
+
+            Intent intent = new Intent(AddFeeTutorActivity.this, PilihJadwalFeeActivity.class);
+            startActivity(intent);
+
+        } if(i == R.id.buttonPresensiAddFee){
+
+            //jika jadwal belum dipilih atau key jadwal masih kosong, maka muncul pilih jadwal
+            if(!Common.keyFeeJadwalSelected.equals("")){
+
+                Intent intent = new Intent(AddFeeTutorActivity.this, CekPresensiActivity.class);
+                startActivity(intent);
+
+            } else {
+
+                Toast.makeText(AddFeeTutorActivity.this,
+                        "Pilih jadwal terlebih dahulu", Toast.LENGTH_SHORT).show();
+
+            }
+
+        } else if(i == R.id.buttonHitungFee){
+
+            if(Common.feeJadwalSelected != null){
+                hitungFee();
+            } else {
+
+                Toast.makeText(this, "Pilih Jadwal terlebih dahulu", Toast.LENGTH_SHORT).show();
+
+            }
+        }
+    }
 }

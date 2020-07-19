@@ -2,18 +2,19 @@ package com.creagine.lbbadmin.Model;
 
 public class Siswa {
 
-    String searchnameSiswa, namaSiswa, jurusanSiswa, jenisKelaminSiswa, tempatLahirSiswa,
+    String idSiswa, searchnameSiswa, namaSiswa, jurusanSiswa, jenisKelaminSiswa, tempatLahirSiswa,
             tanggalLahirSiswa,alamatSiswa, kecamatanSiswa, kotaSiswa, provinsiSiswa, agamaSiswa,
             kebangsaanSiswa, nomorTelpSiswa, nomorHpSiswa, emailSiswa, passwordSiswa;
 
     public Siswa() {
     }
 
-    public Siswa(String searchnameSiswa, String namaSiswa, String jurusanSiswa,
+    public Siswa(String idSiswa, String searchnameSiswa, String namaSiswa, String jurusanSiswa,
                  String jenisKelaminSiswa, String tempatLahirSiswa, String tanggalLahirSiswa,
                  String alamatSiswa, String kecamatanSiswa, String kotaSiswa, String provinsiSiswa,
                  String agamaSiswa, String kebangsaanSiswa, String nomorTelpSiswa,
                  String nomorHpSiswa, String emailSiswa, String passwordSiswa) {
+        this.idSiswa = idSiswa;
         this.searchnameSiswa = searchnameSiswa;
         this.namaSiswa = namaSiswa;
         this.jurusanSiswa = jurusanSiswa;
@@ -158,5 +159,13 @@ public class Siswa {
 
     public void setPasswordSiswa(String passwordSiswa) {
         this.passwordSiswa = passwordSiswa;
+    }
+
+    public String getIdSiswa() {
+        return idSiswa;
+    }
+
+    public void setIdSiswa(String idSiswa) {
+        this.idSiswa = idSiswa;
     }
 }

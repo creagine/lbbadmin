@@ -9,7 +9,10 @@
         android:roundIcon="@drawable/logo_capss_admin"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".AddJadwalPilihTutorActivity"></activity>
+        <activity android:name=".AddJadwalPilihSiswaActivity" />
+        <activity android:name=".GantiJadwalLihatActivity" />
+        <activity android:name=".GantiJadwalListActivity" />
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashScreenStyle">
@@ -21,7 +24,7 @@
         </activity>
         <activity android:name=".JadwalDetail8PertemuanActivity" />
         <activity android:name=".CekPresensiActivity" />
-        <activity android:name=".PilihJadwalActivity" />
+        <activity android:name=".PilihJadwalFeeActivity" />
         <activity android:name=".PresensiDetailActivity" />
         <activity android:name=".FeeTutorDetailActivity" />
         <activity android:name=".TagihanDetailActivity" />
@@ -41,8 +44,9 @@
         <activity android:name=".SiswaActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Splash2Activity"
-            android:theme="@style/SplashScreenStyle"/>
+        <activity
+            android:name=".Splash2Activity"
+            android:theme="@style/SplashScreenStyle" />
     </application>
 
 </manifest>

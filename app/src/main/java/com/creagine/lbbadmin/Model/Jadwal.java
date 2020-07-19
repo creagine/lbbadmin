@@ -2,13 +2,16 @@ package com.creagine.lbbadmin.Model;
 
 public class Jadwal {
 
-    String namaSiswa, jurusan, grade, harga, tutor, hari, jam, tanggal, ruang, pertemuan;
+    String idSiswa, idTutor, namaSiswa, jurusan, grade, harga, tutor, hari, jam, tanggal, ruang, pertemuan;
 
     public Jadwal() {
     }
 
-    public Jadwal(String namaSiswa, String jurusan, String grade, String harga, String tutor,
-                  String hari, String jam, String tanggal, String ruang, String pertemuan) {
+    public Jadwal(String idSiswa, String idTutor, String namaSiswa, String jurusan, String grade,
+                  String harga, String tutor, String hari, String jam, String tanggal, String ruang,
+                  String pertemuan) {
+        this.idSiswa = idSiswa;
+        this.idTutor = idTutor;
         this.namaSiswa = namaSiswa;
         this.jurusan = jurusan;
         this.grade = grade;
@@ -99,5 +102,21 @@ public class Jadwal {
 
     public void setPertemuan(String pertemuan) {
         this.pertemuan = pertemuan;
+    }
+
+    public String getIdSiswa() {
+        return idSiswa;
+    }
+
+    public void setIdSiswa(String idSiswa) {
+        this.idSiswa = idSiswa;
+    }
+
+    public String getIdTutor() {
+        return idTutor;
+    }
+
+    public void setIdTutor(String idTutor) {
+        this.idTutor = idTutor;
     }
 }

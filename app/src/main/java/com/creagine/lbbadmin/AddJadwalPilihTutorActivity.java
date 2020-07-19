@@ -1,6 +1,5 @@
 package com.creagine.lbbadmin;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,8 +11,8 @@ import android.view.ViewGroup;
 
 import com.creagine.lbbadmin.Common.Common;
 import com.creagine.lbbadmin.Interface.ItemClickListener;
-import com.creagine.lbbadmin.Model.Jadwal;
-import com.creagine.lbbadmin.ViewHolder.JadwalViewHolder;
+import com.creagine.lbbadmin.Model.Tutor;
+import com.creagine.lbbadmin.ViewHolder.TutorViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
@@ -22,19 +21,24 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class PilihJadwalActivity extends AppCompatActivity {
+public class AddJadwalPilihTutorActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
 
-    FirebaseRecyclerAdapter<Jadwal, JadwalViewHolder> adapter;
+    private DatabaseReference tutorRef;
+
+    FirebaseRecyclerAdapter<Tutor, TutorViewHolder> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pilih_jadwal);
+        setContentView(R.layout.activity_add_jadwal_pilih_tutor);
+        getSupportActionBar().setTitle("Pilih tutor yang akan mengajar pada jadwal");
 
-        recyclerView = findViewById(R.id.RecyclerViewJadwal);
+        tutorRef = FirebaseDatabase.getInstance().getReference("Tutor");
+
+        recyclerView = findViewById(R.id.RecyclerViewPilihTutor);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
@@ -46,39 +50,29 @@ public class PilihJadwalActivity extends AppCompatActivity {
     private void fetch() {
 
         //firebase recycler, model Shop
-        FirebaseRecyclerOptions<Jadwal> options = new FirebaseRecyclerOptions.Builder<Jadwal>()
-                .setQuery(FirebaseDatabase.getInstance()
-                                .getReference()
-                                .child("Jadwal")
-                        ,Jadwal.class)
+        FirebaseRecyclerOptions<Tutor> options = new FirebaseRecyclerOptions.Builder<Tutor>()
+                .setQuery(tutorRef,Tutor.class)
                 .build();
 
         //recycler adapter shop - ShopViewHolder
-        adapter = new FirebaseRecyclerAdapter<Jadwal, JadwalViewHolder>(options) {
+        adapter = new FirebaseRecyclerAdapter<Tutor, TutorViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull JadwalViewHolder viewHolder, int position, @NonNull Jadwal model) {
+            protected void onBindViewHolder(@NonNull TutorViewHolder viewHolder, int position, @NonNull Tutor model) {
 
-                viewHolder.siswaNama.setText(model.getNamaSiswa());
-                viewHolder.siswaJurusan.setText(model.getJurusan());
-                viewHolder.tutorNama.setText(model.getTutor());
+                viewHolder.txtNamaTutor.setText(model.getNamaTutor());
+                viewHolder.txtJurusanTutor.setText(model.getJurusanTutor());
 
-                final Jadwal clickItem = model;
+                final Tutor clickItem = model;
 
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
 
-                        //Get CategoryId and send to new Activity
-                        Intent intent = new Intent(PilihJadwalActivity.this, AddFeeTutorActivity.class);
-
                         //When user select shop, we will save shop id to select service of this shop
-                        Common.keyFeeJadwalSelected = adapter.getRef(position).getKey();
+                        Common.keyTutorAddJadwalSelected = adapter.getRef(position).getKey();
 
-                        getDataJadwal();
+                        getDataTutor();
 
-                        intent.putExtra("btnjadwal", "Jadwal sudah dipilih");
-
-                        startActivity(intent);
                         finish();
 
                     }
@@ -87,10 +81,10 @@ public class PilihJadwalActivity extends AppCompatActivity {
 
             @NonNull
             @Override
-            public JadwalViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            public TutorViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 View itemView = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.jadwal_item, parent, false);
-                return new JadwalViewHolder(itemView) {
+                        .inflate(R.layout.tutor_item, parent, false);
+                return new TutorViewHolder(itemView) {
                 };
             }
         };
@@ -100,17 +94,18 @@ public class PilihJadwalActivity extends AppCompatActivity {
 
     }
 
-    private void getDataJadwal(){
+    private void getDataTutor(){
 
-        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Jadwal");
-
-        usersRef.child(Common.keyFeeJadwalSelected)
+        tutorRef.child(Common.keyTutorAddJadwalSelected)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
-                        Jadwal selectedJadwal = dataSnapshot.getValue(Jadwal.class);
-                        Common.feeJadwalSelected = selectedJadwal;
+                        Tutor selectedTutor = dataSnapshot.getValue(Tutor.class);
+
+                        Common.btnPilihTutorSelected = selectedTutor.getNamaTutor();
+
+                        Common.addJadwalTutorSelected = selectedTutor;
 
                     }
 
@@ -126,4 +121,5 @@ public class PilihJadwalActivity extends AppCompatActivity {
     public void onBackPressed() {
         finish();
     }
+
 }

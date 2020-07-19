@@ -1,5 +1,6 @@
 package com.creagine.lbbadmin.Common;
 
+import com.creagine.lbbadmin.Model.GantiJadwal;
 import com.creagine.lbbadmin.Model.Jadwal;
 import com.creagine.lbbadmin.Model.Siswa;
 import com.creagine.lbbadmin.Model.Tutor;
@@ -16,6 +17,8 @@ public class Common {
     public static Tutor tutorSelected;
     public static Jadwal feeJadwalSelected;
     public static String keyFeeJadwalSelected = "";
+    public static String keyJadwalGantiSelected = "";
+    public static GantiJadwal jadwalPenggantiSelected;
 
     public static String statusPresensiPekan1 = "";
     public static String statusPresensiPekan2 = "";
@@ -28,4 +31,11 @@ public class Common {
     public static String statusPresensiPekanPengganti = "";
     public static String statusPresensiPekanPengganti2 = "";
 
+    public static String keySiswaAddJadwalSelected;
+    public static String btnPilihSiswaSelected = "Pilih siswa";
+    public static Siswa addJadwalSiswaSelected;
+    public static String keyTutorAddJadwalSelected;
+    public static String btnPilihTutorSelected = "Pilih tutor";
+    public static Tutor addJadwalTutorSelected;
+    public static String btnPilihjadwalSelected = "Pilih jadwal";
 }

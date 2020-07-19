@@ -2,7 +2,6 @@ package com.creagine.lbbadmin;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,8 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.creagine.lbbadmin.Common.Common;
 import com.creagine.lbbadmin.Interface.ItemClickListener;
@@ -25,52 +22,24 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class JadwalActivity extends AppCompatActivity {
+public class PilihJadwalFeeActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
-    private Button btnFilterJadwal;
-    private FloatingActionButton btnAddJadwal;
 
     FirebaseRecyclerAdapter<Jadwal, JadwalViewHolder> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jadwal);
-        getSupportActionBar().setTitle("List Jadwal");
+        setContentView(R.layout.activity_pilih_jadwal_fee);
 
-        //TODO fitur filter pake dropdown parameternya ruang, tutor, siswa, jurusan, hari,
-        // coba cek gobiz fitur filter tagihan
-
-        btnAddJadwal = findViewById(R.id.buttonAddJadwal);
-        btnFilterJadwal = findViewById(R.id.buttonFilterJadwal);
-        recyclerView = findViewById(R.id.recyclerViewJadwal);
+        recyclerView = findViewById(R.id.RecyclerViewJadwal);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
 
         fetch();
-
-        btnAddJadwal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(JadwalActivity.this, AddJadwalActivity.class);
-                startActivity(intent);
-
-            }
-        });
-
-        btnFilterJadwal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(JadwalActivity.this, JadwalActivity.class);
-                startActivity(intent);
-
-            }
-        });
 
     }
 
@@ -100,9 +69,13 @@ public class JadwalActivity extends AppCompatActivity {
                     public void onClick(View view, int position, boolean isLongClick) {
 
                         //When user select shop, we will save shop id to select service of this shop
-                        Common.jadwalSelected = adapter.getRef(position).getKey();
+                        Common.keyFeeJadwalSelected = adapter.getRef(position).getKey();
 
                         getDataJadwal();
+
+                        Common.btnPilihjadwalSelected = "Jadwal sudah dipilih";
+
+                        finish();
 
                     }
                 });
@@ -125,39 +98,23 @@ public class JadwalActivity extends AppCompatActivity {
 
     private void getDataJadwal(){
 
-            DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Jadwal");
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Jadwal");
 
-            usersRef.child(Common.jadwalSelected)
-                    .addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
+        usersRef.child(Common.keyFeeJadwalSelected)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
 
-                            Jadwal selectedJadwal = dataSnapshot.getValue(Jadwal.class);
+                        Jadwal selectedJadwal = dataSnapshot.getValue(Jadwal.class);
+                        Common.feeJadwalSelected = selectedJadwal;
 
-                            String jumlahPertemuan = selectedJadwal.getPertemuan();
+                    }
 
-                            if(jumlahPertemuan.equals("4")){
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
 
-                                Intent intent = new Intent(JadwalActivity.this, JadwalDetail4PertemuanActivity.class);
-                                startActivity(intent);
-
-                            }else if(jumlahPertemuan.equals("8")){
-
-                                Intent intent = new Intent(JadwalActivity.this, JadwalDetail8PertemuanActivity.class);
-                                startActivity(intent);
-
-                            } else {
-                                Toast.makeText(JadwalActivity.this,
-                                        "Jumlah pertemuan tidak diketahui", Toast.LENGTH_SHORT).show();
-                            }
-
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
+                    }
+                });
 
     }
 
@@ -165,5 +122,4 @@ public class JadwalActivity extends AppCompatActivity {
     public void onBackPressed() {
         finish();
     }
-
 }

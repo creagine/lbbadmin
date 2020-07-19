@@ -25,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class AddTutorActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnSave, btnCancel;
-    private EditText editTextNamaTutor, edtEmailTutor, edtPasswordTutor, edtConfirmTutor,
+    private EditText editTextIdTutor, editTextNamaTutor, edtEmailTutor, edtPasswordTutor, edtConfirmTutor,
             edtJurusanTutor;
     private ProgressBar progressBar;
 
@@ -54,6 +54,7 @@ public class AddTutorActivity extends AppCompatActivity implements View.OnClickL
 
     private void widgets() {
 
+        editTextIdTutor = findViewById(R.id.editTextIdTutor);
         editTextNamaTutor = findViewById(R.id.editTextNamaTutor);
         edtEmailTutor = findViewById(R.id.editTextEmail);
         edtPasswordTutor = findViewById(R.id.editTextPassword);
@@ -79,6 +80,7 @@ public class AddTutorActivity extends AppCompatActivity implements View.OnClickL
 
     private void saveTutor(){
 
+        final String idTutor = editTextIdTutor.getText().toString();
         final String namaTutor = editTextNamaTutor.getText().toString();
         final String emailTutor = edtEmailTutor.getText().toString();
         final String passwordTutor = edtPasswordTutor.getText().toString();
@@ -86,6 +88,11 @@ public class AddTutorActivity extends AppCompatActivity implements View.OnClickL
         final String searchname = namaTutor.toLowerCase().replace(" ", "");
 
         final String jurusan = edtJurusanTutor.getText().toString();
+
+        if (TextUtils.isEmpty(idTutor)) {
+            Toast.makeText(getApplicationContext(), "Masukkan ID!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         if (TextUtils.isEmpty(namaTutor)) {
             Toast.makeText(getApplicationContext(), "Masukkan nama!", Toast.LENGTH_SHORT).show();
@@ -133,7 +140,7 @@ public class AddTutorActivity extends AppCompatActivity implements View.OnClickL
                                     Toast.LENGTH_SHORT).show();
                         } else {
 
-                            pushToDatabase(namaTutor, searchname, emailTutor, passwordTutor, jurusan);
+                            pushToDatabase(idTutor, namaTutor, searchname, emailTutor, passwordTutor, jurusan);
 
                             startActivity(new Intent(AddTutorActivity.this, TutorActivity.class));
                             finish();
@@ -143,13 +150,13 @@ public class AddTutorActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
-    private void pushToDatabase(String namaTutor, String searchnameTutor, String emailTutor, String passwordTutor, String jurusanTutor){
+    private void pushToDatabase(String idTutor, String namaTutor, String searchnameTutor, String emailTutor, String passwordTutor, String jurusanTutor){
 
         //get current user
         user = FirebaseAuth.getInstance().getCurrentUser();
         String tutorId = user.getUid();
 
-        Tutor newTutor = new Tutor(namaTutor, searchnameTutor, emailTutor, passwordTutor,
+        Tutor newTutor = new Tutor(idTutor, namaTutor, searchnameTutor, emailTutor, passwordTutor,
                 jurusanTutor);
 
         tutorRef.child(tutorId).setValue(newTutor);

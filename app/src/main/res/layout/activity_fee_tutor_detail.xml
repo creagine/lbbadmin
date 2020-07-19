@@ -8,15 +8,14 @@
     tools:context=".SppDetailActivity">
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/buttonAddFee"
+        android:id="@+id/buttonAddFeeTutor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:clickable="true"
-        app:backgroundTint="@color/cappsadmin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_assignment_white_24dp"
-        app:useCompatPadding="true" />
+        app:srcCompat="@drawable/ic_assignment_white_24dp" />
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView2"

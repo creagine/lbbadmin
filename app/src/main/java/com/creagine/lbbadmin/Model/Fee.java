@@ -2,19 +2,21 @@ package com.creagine.lbbadmin.Model;
 
 public class Fee {
 
-    String no, namaTutor, namaSiswa, bulan, tahun, jurusan, grade, tarif, fee, presensi, tglSpp;
+    String no, idTutor, namaTutor, namaSiswa, bulan, tahun, jurusan, grade, tarif, fee, presensi,
+            tglSpp;
 
     public Fee() {
     }
 
-    public Fee(String no, String namaTutor, String bulan, String tahun, String namaSiswa,
-               String jurusan, String grade, String tarif, String fee, String presensi,
-               String tglSpp) {
+    public Fee(String no, String idTutor, String namaTutor, String namaSiswa, String bulan,
+               String tahun, String jurusan, String grade, String tarif, String fee,
+               String presensi, String tglSpp) {
         this.no = no;
+        this.idTutor = idTutor;
         this.namaTutor = namaTutor;
+        this.namaSiswa = namaSiswa;
         this.bulan = bulan;
         this.tahun = tahun;
-        this.namaSiswa = namaSiswa;
         this.jurusan = jurusan;
         this.grade = grade;
         this.tarif = tarif;
@@ -109,5 +111,13 @@ public class Fee {
 
     public void setTglSpp(String tglSpp) {
         this.tglSpp = tglSpp;
+    }
+
+    public String getIdTutor() {
+        return idTutor;
+    }
+
+    public void setIdTutor(String idTutor) {
+        this.idTutor = idTutor;
     }
 }

@@ -24,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 public class FeeTutorDetailActivity extends AppCompatActivity {
 
     private TextView txtNama, txtJurusan;
-
     private FloatingActionButton btnAddFee;
 
     private RecyclerView recyclerView;
@@ -38,9 +37,9 @@ public class FeeTutorDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fee_tutor_detail);
         getSupportActionBar().setTitle("Detail fee tutor");
 
-        btnAddFee = findViewById(R.id.buttonAddFee);
         txtNama = findViewById(R.id.textViewNamaTutorFee);
         txtJurusan = findViewById(R.id.textViewJurusanTutorFee);
+        btnAddFee = findViewById(R.id.buttonAddFeeTutor);
 
         recyclerView = findViewById(R.id.recyclerViewFee);
         linearLayoutManager = new LinearLayoutManager(this);
@@ -54,11 +53,8 @@ public class FeeTutorDetailActivity extends AppCompatActivity {
         btnAddFee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent(FeeTutorDetailActivity.this,
-                        AddFeeTutorActivity.class);
+                Intent intent = new Intent(FeeTutorDetailActivity.this, AddFeeTutorActivity.class);
                 startActivity(intent);
-
             }
         });
 
@@ -77,8 +73,8 @@ public class FeeTutorDetailActivity extends AppCompatActivity {
         FirebaseRecyclerOptions<Fee> options = new FirebaseRecyclerOptions.Builder<Fee>()
                 .setQuery(FirebaseDatabase.getInstance()
                                 .getReference()
-                                .child("Fee").orderByChild("namaTutor")
-                                .equalTo(Common.tutorSelected.getNamaTutor())
+                                .child("Fee").orderByChild("idTutor")
+                                .equalTo(Common.tutorSelected.getIdTutor())
                         ,Fee.class)
                 .build();
 
@@ -104,14 +100,6 @@ public class FeeTutorDetailActivity extends AppCompatActivity {
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-
-                        //Get CategoryId and send to new Activity
-//                        Intent intent = new Intent(FeeTutorDetailActivity.this, TagihanDetailActivity.class);
-
-                        //When user select shop, we will save shop id to select service of this shop
-//                        Common.tagihanSelected = adapter.getRef(position).getKey();
-
-//                        startActivity(intent);
 
                     }
                 });

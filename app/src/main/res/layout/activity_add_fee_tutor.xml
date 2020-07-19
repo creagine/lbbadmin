@@ -40,7 +40,7 @@
                 android:layout_marginBottom="16dp"
                 android:ems="10"
                 android:hint="Cth: 123456789"
-                android:inputType="textPersonName" />
+                android:inputType="phone" />
 
             <TextView
                 android:id="@+id/textView68"
@@ -61,7 +61,7 @@
                 android:textSize="12sp" />
 
             <Button
-                android:id="@+id/buttonPilihJadwal"
+                android:id="@+id/buttonPilihJadwalAddFee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -133,7 +133,7 @@
                 android:textSize="12sp" />
 
             <Button
-                android:id="@+id/buttonPresensi"
+                android:id="@+id/buttonPresensiAddFee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -166,7 +166,7 @@
                 android:layout_marginBottom="16dp"
                 android:ems="10"
                 android:hint="Cth: 4"
-                android:inputType="textPersonName" />
+                android:inputType="phone" />
 
             <TextView
                 android:id="@+id/textView76"
@@ -185,7 +185,7 @@
                 android:layout_marginBottom="16dp"
                 android:ems="10"
                 android:hint="Cth: 4"
-                android:inputType="textPersonName" />
+                android:inputType="phone" />
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"

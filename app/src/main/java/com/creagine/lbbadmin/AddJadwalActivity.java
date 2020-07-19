@@ -19,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.creagine.lbbadmin.Common.Common;
 import com.creagine.lbbadmin.Model.Jadwal;
 import com.creagine.lbbadmin.Model.Siswa;
 import com.creagine.lbbadmin.Model.Tutor;
@@ -35,11 +36,14 @@ import java.util.Locale;
 
 public class AddJadwalActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button btnSave, btnCancel, btnJamMulai, btnJamSelesai, btnTanggal;
+    private Button btnSave, btnCancel, btnJamMulai, btnJamSelesai, btnTanggal, btnPilihSiswa,
+            btnPilihTutor;
     private Spinner spinnerSiswa, spinnerTutor, spinnerHari, spinnerRuang, spinnerPertemuan;
     private EditText edtHarga, edtGrade, edtJurusan;
     private ProgressBar progressBar;
-    
+
+    private String namaSiswa, tutor, hari, grade, harga, jurusan, jam, ruang, pertemuan, jadwalId,
+    idSiswa, idTutor;
     private String tanggal, jamMulai, jamSelesai;
 
     private TimePickerDialog timePickerDialog;
@@ -52,7 +56,6 @@ public class AddJadwalActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_jadwal);
-
         getSupportActionBar().setTitle("Tambah jadwal");
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
@@ -64,41 +67,17 @@ public class AddJadwalActivity extends AppCompatActivity implements View.OnClick
 
         widgets();
 
-        generateSiswa();
-
-        generateTutor();
+//        generateSiswa();
+//
+//        generateTutor();
 
         btnTanggal.setOnClickListener(this);
         btnJamMulai.setOnClickListener(this);
         btnJamSelesai.setOnClickListener(this);
         btnSave.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
-
-    }
-
-    private void generateSiswa() {
-
-        siswaRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                final ArrayList<String> siswas = new ArrayList<String>();
-
-                for (DataSnapshot ds:dataSnapshot.getChildren())
-                {
-                    String name=ds.getValue(Siswa.class).getNamaSiswa();
-                    siswas.add(name);
-                }
-
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AddJadwalActivity.this, android.R.layout.simple_spinner_item, siswas);
-                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerSiswa.setAdapter(arrayAdapter);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        btnPilihSiswa.setOnClickListener(this);
+        btnPilihTutor.setOnClickListener(this);
 
     }
 
@@ -112,40 +91,68 @@ public class AddJadwalActivity extends AppCompatActivity implements View.OnClick
         edtJurusan = findViewById(R.id.editTextJurusan);
         spinnerRuang = findViewById(R.id.spinnerRuang);
         spinnerHari = findViewById(R.id.spinnerHari);
-        spinnerTutor = findViewById(R.id.spinnerTutor);
-        spinnerSiswa = findViewById(R.id.spinnerSiswa);
+//        spinnerTutor = findViewById(R.id.spinnerTutor);
+//        spinnerSiswa = findViewById(R.id.spinnerSiswa);
         spinnerPertemuan = findViewById(R.id.spinnerPertemuan);
         btnSave = findViewById(R.id.buttonSaveJadwal);
         btnCancel = findViewById(R.id.buttonCancelJadwal);
+        btnPilihTutor = findViewById(R.id.buttonPilihTutorAddJadwal);
+        btnPilihSiswa = findViewById(R.id.buttonPilihSiswaAddJadwal);
         progressBar = findViewById(R.id.progressBarJadwal);
 
     }
 
-    private void generateTutor(){
+//    private void generateSiswa() {
+//
+//        siswaRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                final ArrayList<String> siswas = new ArrayList<String>();
+//
+//                for (DataSnapshot ds:dataSnapshot.getChildren())
+//                {
+//                    String name=ds.getValue(Siswa.class).getNamaSiswa();
+//                    siswas.add(name);
+//                }
+//
+//                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AddJadwalActivity.this, android.R.layout.simple_spinner_item, siswas);
+//                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//                spinnerSiswa.setAdapter(arrayAdapter);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//    }
 
-        tutorRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                final ArrayList<String> tutors = new ArrayList<String>();
-
-                for (DataSnapshot ds:dataSnapshot.getChildren())
-                {
-                    String name=ds.getValue(Tutor.class).getNamaTutor();
-                    tutors.add(name);
-                }
-
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AddJadwalActivity.this, android.R.layout.simple_spinner_item, tutors);
-                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerTutor.setAdapter(arrayAdapter);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-    }
+//    private void generateTutor(){
+//
+//        tutorRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                final ArrayList<String> tutors = new ArrayList<String>();
+//
+//                for (DataSnapshot ds:dataSnapshot.getChildren())
+//                {
+//                    String name=ds.getValue(Tutor.class).getNamaTutor();
+//                    tutors.add(name);
+//                }
+//
+//                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AddJadwalActivity.this, android.R.layout.simple_spinner_item, tutors);
+//                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//                spinnerTutor.setAdapter(arrayAdapter);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//    }
 
     private void showDateDialog(){
 
@@ -273,9 +280,21 @@ public class AddJadwalActivity extends AppCompatActivity implements View.OnClick
             showTimeDialogJamSelesai();
 
         } else if (i == R.id.buttonCancelJadwal){
+
             Intent intent = new Intent (AddJadwalActivity.this, JadwalActivity.class);
             startActivity(intent);
             finish();
+
+        } else if (i == R.id.buttonPilihSiswaAddJadwal) {
+
+            Intent intent = new Intent(AddJadwalActivity.this, AddJadwalPilihSiswaActivity.class);
+            startActivity(intent);
+
+        } else if (i == R.id.buttonPilihTutorAddJadwal) {
+
+            Intent intent = new Intent(AddJadwalActivity.this, AddJadwalPilihTutorActivity.class);
+            startActivity(intent);
+
         }
     }
 
@@ -283,15 +302,17 @@ public class AddJadwalActivity extends AppCompatActivity implements View.OnClick
 
         progressBar.setVisibility(View.VISIBLE);
 
-        final String namaSiswa = spinnerSiswa.getSelectedItem().toString();
-        final String tutor = spinnerTutor.getSelectedItem().toString();
-        final String hari = spinnerHari.getSelectedItem().toString();
-        String grade = edtGrade.getText().toString();
-        String harga = edtHarga.getText().toString();
-        String jurusan = edtJurusan.getText().toString();
-        String jam = jamMulai+" - "+jamSelesai;
-        String ruang = spinnerRuang.getSelectedItem().toString();
-        String pertemuan = spinnerPertemuan.getSelectedItem().toString();
+        idSiswa = Common.addJadwalSiswaSelected.getIdSiswa();
+        idTutor = Common.addJadwalTutorSelected.getIdTutor();
+        namaSiswa = Common.addJadwalSiswaSelected.getNamaSiswa();
+        tutor = Common.addJadwalTutorSelected.getNamaTutor();
+        hari = spinnerHari.getSelectedItem().toString();
+        grade = edtGrade.getText().toString();
+        harga = edtHarga.getText().toString();
+        jurusan = edtJurusan.getText().toString();
+        jam = jamMulai+" - "+jamSelesai;
+        ruang = spinnerRuang.getSelectedItem().toString();
+        pertemuan = spinnerPertemuan.getSelectedItem().toString();
 
         if (TextUtils.isEmpty(namaSiswa)) {
             Toast.makeText(getApplicationContext(), "Masukkan nama siswa!", Toast.LENGTH_SHORT).show();
@@ -340,15 +361,29 @@ public class AddJadwalActivity extends AppCompatActivity implements View.OnClick
             return;
         }
 
-        String jadwalId = jadwalRef.push().getKey();
+        jadwalId = jadwalRef.push().getKey();
 
-        Jadwal newJadwal = new Jadwal(namaSiswa, jurusan, grade, harga, tutor, hari, jam, tanggal,
-                ruang, pertemuan);
+        Jadwal newJadwal = new Jadwal(idSiswa, idTutor, namaSiswa, jurusan, grade, harga, tutor,
+                hari, jam, tanggal, ruang, pertemuan);
 
         jadwalRef.child(jadwalId).setValue(newJadwal);
 
         finish();
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        btnPilihSiswa.setText(Common.btnPilihSiswaSelected);
+        btnPilihTutor.setText(Common.btnPilihTutorSelected);
+    }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        btnPilihSiswa.setText(Common.btnPilihSiswaSelected);
+//        btnPilihTutor.setText(Common.btnPilihTutorSelected);
+//    }
 
 }

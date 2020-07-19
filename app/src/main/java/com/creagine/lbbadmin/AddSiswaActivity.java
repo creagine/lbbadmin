@@ -28,7 +28,7 @@ public class AddSiswaActivity extends AppCompatActivity implements View.OnClickL
     private EditText editTextNamaSiswa,editTextTempatLahir,editTextTanggalLahir,editTextBulanLahir,
             editTextTahunLahir,editTextAlamat,editTextKecamatan,editTextKota,editTextProvinsi,
             editTextAgama,editTextKebangsaan,editTextNomorTelp,editTextNomorHp,editTextEmail,
-            editTextPassword,editTextConfirmPassword, edtJurusan;
+            editTextPassword,editTextConfirmPassword, edtJurusan, edtIdSiswa;
 
     private Spinner spinnerJenisKelamin;
 
@@ -76,6 +76,7 @@ public class AddSiswaActivity extends AppCompatActivity implements View.OnClickL
         editTextConfirmPassword = findViewById(R.id.editTextConfirmPassword);
         progressBar = findViewById(R.id.progressBar);
         edtJurusan = findViewById(R.id.editTextJurusan);
+        edtIdSiswa = findViewById(R.id.editTextIdSiswa);
         spinnerJenisKelamin = findViewById(R.id.spinnerJenisKelamin);
         btnSave = findViewById(R.id.buttonSaveSiswa);
         btnCancel = findViewById(R.id.buttonCancelSiswa);
@@ -93,6 +94,7 @@ public class AddSiswaActivity extends AppCompatActivity implements View.OnClickL
 
     private void saveSiswa(){
 
+        final String idSiswa = edtIdSiswa.getText().toString();
         final String namaSiswa = editTextNamaSiswa.getText().toString();
         final String searchname = namaSiswa.toLowerCase().replace(" ", "");
         final String tempatLahir = editTextTempatLahir.getText().toString();
@@ -115,6 +117,11 @@ public class AddSiswaActivity extends AppCompatActivity implements View.OnClickL
         final String jurusan = edtJurusan.getText().toString();
 
         final String lahir = tanggalLahir + "-" + bulanLahir + "-" + tahunLahir;
+
+        if (TextUtils.isEmpty(idSiswa)) {
+            Toast.makeText(getApplicationContext(), "Masukkan ID!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(), "Masukkan email!", Toast.LENGTH_SHORT).show();
@@ -232,7 +239,7 @@ public class AddSiswaActivity extends AppCompatActivity implements View.OnClickL
                                     Toast.LENGTH_SHORT).show();
                         } else {
 
-                            pushToDatabase(searchname, namaSiswa, jurusan,
+                            pushToDatabase(idSiswa, searchname, namaSiswa, jurusan,
                                     jenisKelamin, tempatLahir, lahir,
                                     alamat, kecamatan, kota, provinsi,
                                     agama, kebangsaan, nomorTelp,
@@ -245,7 +252,7 @@ public class AddSiswaActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
-    private void pushToDatabase(String searchnameSiswa, String namaSiswa, String jurusanSiswa,
+    private void pushToDatabase(String idSiswa, String searchnameSiswa, String namaSiswa, String jurusanSiswa,
                                 String jenisKelaminSiswa, String tempatLahirSiswa, String tanggalLahirSiswa,
                                 String alamatSiswa, String kecamatanSiswa, String kotaSiswa, String provinsiSiswa,
                                 String agamaSiswa, String kebangsaanSiswa, String nomorTelpSiswa,
@@ -255,7 +262,7 @@ public class AddSiswaActivity extends AppCompatActivity implements View.OnClickL
         user = FirebaseAuth.getInstance().getCurrentUser();
         String siswaId = user.getUid();
 
-        Siswa newSiswa = new Siswa(searchnameSiswa, namaSiswa, jurusanSiswa,
+        Siswa newSiswa = new Siswa(idSiswa, searchnameSiswa, namaSiswa, jurusanSiswa,
                 jenisKelaminSiswa, tempatLahirSiswa, tanggalLahirSiswa,
                 alamatSiswa, kecamatanSiswa, kotaSiswa, provinsiSiswa,
                 agamaSiswa, kebangsaanSiswa, nomorTelpSiswa,

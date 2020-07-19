@@ -1,10 +1,12 @@
 package com.creagine.lbbadmin;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         //TODO tambahin auth
         //TODO tambahin tombol ke halaman notif di pojok kanan atas
+        //TODO munculkan ganti jadwal dimana?
 
         // kita set default nya Home Fragment
         loadFragment(new HomeFragment());
@@ -58,4 +61,19 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
         return loadFragment(fragment);
     }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Keluar dari aplikasi")
+                .setMessage("Anda yakin akan keluar dari aplikasi?")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        MainActivity.super.onBackPressed();
+                    }
+                }).create().show();
+    }
+
 }

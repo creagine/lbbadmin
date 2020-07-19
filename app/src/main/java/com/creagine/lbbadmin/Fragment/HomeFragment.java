@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.creagine.lbbadmin.FeeTutorActivity;
 import com.creagine.lbbadmin.JadwalActivity;
+import com.creagine.lbbadmin.GantiJadwalListActivity;
 import com.creagine.lbbadmin.R;
 import com.creagine.lbbadmin.SiswaActivity;
 import com.creagine.lbbadmin.SppActivity;
@@ -19,7 +20,7 @@ import com.creagine.lbbadmin.TutorActivity;
 
 public class HomeFragment extends Fragment {
 
-    CardView cardJadwal,cardSiswa,cardTutor,cardSpp,cardFeeTutor;
+    CardView cardJadwal,cardSiswa,cardTutor,cardSpp,cardFeeTutor, cardGantiJadwal;
 
     @Nullable
     @Override
@@ -31,6 +32,7 @@ public class HomeFragment extends Fragment {
         cardTutor = view.findViewById(R.id.cardTutor);
         cardSpp = view.findViewById(R.id.CardViewSpp);
         cardFeeTutor = view.findViewById(R.id.CardViewFeeTutor);
+        cardGantiJadwal = view.findViewById(R.id.cardGantiJadwal);
 
         cardJadwal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +70,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), FeeTutorActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        cardGantiJadwal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), GantiJadwalListActivity.class);
                 startActivity(intent);
             }
         });
